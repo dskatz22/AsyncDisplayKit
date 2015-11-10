@@ -12,6 +12,7 @@
 #import "HorizontalScrollCellNode.h"
 #import "RandomCoreGraphicsNode.h"
 #import "AppDelegate.h"
+#import "ImageCellNode.h"
 
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 
@@ -69,9 +70,14 @@ static const CGFloat kInnerPadding = 10.0f;
 
 - (ASCellNode *)collectionView:(ASCollectionView *)collectionView nodeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  RandomCoreGraphicsNode *elementNode = [[RandomCoreGraphicsNode alloc] init];
-  elementNode.preferredFrameSize = _elementSize;
-  return elementNode;
+  if([indexPath row] > 3) {
+    RandomCoreGraphicsNode *elementNode = [[RandomCoreGraphicsNode alloc] init];
+    elementNode.preferredFrameSize = _elementSize;
+    return elementNode;
+  } else {
+    ImageCellNode *imageCellNode = [[ImageCellNode alloc] init];
+    return imageCellNode;
+  }
 }
 
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
