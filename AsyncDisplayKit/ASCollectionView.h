@@ -281,6 +281,10 @@
  */
 - (ASScrollDirection)scrollableDirections;
 
+- (void)clearContents;
+- (void)clearFetchedData;
+
+
 @end
 
 

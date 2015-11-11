@@ -18,4 +18,5 @@
 
 @property (nonatomic, readonly) ASCollectionView *view;
 
+
 @end

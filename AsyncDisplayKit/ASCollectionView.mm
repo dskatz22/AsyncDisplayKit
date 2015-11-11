@@ -177,6 +177,23 @@ static BOOL _isInterceptedSelector(SEL sel)
 #pragma mark -
 #pragma mark Lifecycle.
 
+- (void)clearContents
+{
+  for (NSArray *section in [_dataController completedNodes]) {
+    for (ASDisplayNode *node in section) {
+      [node recursivelyClearContents];
+    }
+  }
+}
+- (void)clearFetchedData
+{
+  for (NSArray *section in [_dataController completedNodes]) {
+    for (ASDisplayNode *node in section) {
+      [node recursivelyClearFetchedData];
+    }
+  }
+}
+
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
 {
   return [self initWithFrame:CGRectZero collectionViewLayout:layout asyncDataFetching:NO];
